@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""A github org client
+"""GithubClient
 """
 from typing import (
     List,
@@ -14,31 +14,31 @@ from utils import (
 
 
 class GithubOrgClient:
-    """A Githib org client
+    """GithubClient
     """
     ORG_URL = "https://api.github.com/orgs/{org}"
 
     def __init__(self, org_name: str) -> None:
-        """Init method of GithubOrgClient"""
+        """Init method of GithubClient"""
         self._org_name = org_name
 
     @memoize
     def org(self) -> Dict:
-        """Memoize org"""
+        """Memorize"""
         return get_json(self.ORG_URL.format(org=self._org_name))
 
     @property
     def _public_repos_url(self) -> str:
-        """Public repos URL"""
+        """UrlOfPublicRepos"""
         return self.org["repos_url"]
 
     @memoize
     def repos_payload(self) -> Dict:
-        """Memoize repos payload"""
+        """PayloadMemoriseRepos"""
         return get_json(self._public_repos_url)
 
     def public_repos(self, license: str = None) -> List[str]:
-        """Public repos"""
+        """PublicRepos"""
         json_payload = self.repos_payload
         public_repos = [
             repo["name"] for repo in json_payload
