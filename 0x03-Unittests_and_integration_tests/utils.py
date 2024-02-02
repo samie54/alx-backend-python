@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generic utilities for github org client.
+"""Githubclient test utilities
 """
 import requests
 from functools import wraps
@@ -19,7 +19,7 @@ __all__ = [
 
 
 def access_nested_map(nested_map: Mapping, path: Sequence) -> Any:
-    """Access nested map with key path.
+    """Access nested map with keyy path.
     Parameters
     ----------
     nested_map: Mapping
